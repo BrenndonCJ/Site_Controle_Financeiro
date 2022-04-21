@@ -5,7 +5,6 @@
 
 ### 🚀 Sobre
 
-O Controle Financeiro é uma aplicação Web feita utilizando Python no back-end com o framework Flask e HTML5 e CSS3 para o front-end.
+O <b>[Controle Financeiro](http://controlefinanceirobr.herokuapp.com/)</b> é uma aplicação Web feita utilizando Python no back-end com o framework Flask e HTML5 e CSS3 para o front-end.
 
-#### Acesse
- ![Controle Financeiro](http://controlefinanceirobr.herokuapp.com/)
+#### Acesse o site [AQUI](http://controlefinanceirobr.herokuapp.com/)
