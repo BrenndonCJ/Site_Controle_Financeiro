@@ -1,0 +1,91 @@
+{% if current_user.is_authenticated %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CRUD</title>
+
+        <link rel="stylesheet" href="../static/css/stylesDebitos.css">
+        <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+    
+        <script>
+            window.saveURL = "{{ url_for('save_data') }}";
+        </script>
+        
+    </head>
+      
+    <body>
+        <div class="header-page">
+            <div>
+                {% if total %}
+                <h1>Saldo R${{total}}</h1>
+                {% else %}
+                <h1>Saldo R$0</h1>
+                {% endif %}
+            </div>
+            <div>
+                <a href="{{url_for('logout')}}">
+                    <span class="material-icons">logout</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="header">
+                <span>Lista de débitos: {{current_user.username.title()}}</span>
+                <button onclick="openModal()" id="new">Incluir</i></button>
+            </div>
+      
+            <div class="divTable">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Descrição</th>
+                            <th>Valor</th>
+                            <th class="acao">Editar</th>
+                            <th class="acao">Excluir</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for d in data%}
+                        <tr>
+                            <td>{{d.descricao}}</td>
+                            <td>R$ {{ '{0:.2f}'.format(d.valor).replace('-','') }}</td>
+                            <td class="acao">
+                                <button name="bt-edit" onclick="editItem('{{d.id}}','{{d.descricao}}','{{d.valor}}')"><i class='bx bx-edit' ></i></button>
+                            </td>
+                            <td class="acao">
+                                <button onclick="window.location.href='delete/'+'{{d.id}}'"><i class='bx bx-trash'></i></button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        
+            <div class="modal-container">
+                <div class="modal">
+                    <form id="myform" name="myform" action="{{ url_for('save_data') }}" method="POST">
+                        <label for="m-desc">Descrição</label>
+                        <input id="m-desc" type="text" name="desc" placeholder="" required />
+
+                        <label for="m-valor">Valor</label>
+                        <input id="m-valor" type="number" name="valor" placeholder="R$" required />
+                        <button id="btnSalvar">salvar</button>
+                    </form>
+                </div>
+            </div>      
+        </div>
+
+        <script src="../static/javascript/scriptsDebitos.js"></script>
+    
+    </body>
+      
+</html>
+{% else %}
+NENHUM USUARIO LOGADO
+{% endif %}
