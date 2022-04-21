@@ -24,12 +24,48 @@
     display: flex;
 }
 
+.header-sobre {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+}
+
+.header-sobre > h1 {
+    margin-left: 50%;
+    transform: translate(-50%);
+}
+
+.header-sobre > button {
+    border: none;
+    background: transparent;
+}
+
+.header-sobre > button:hover {
+    border-radius: 5px;
+    background: #00000050;
+    text-align: center;
+    height: 25px;
+}
+
 .describle {
     display: flex;
     flex-direction: column;
 }
 
-p {
-    margin: 5px 10px;
+.describle p {
+    margin: 3px 15px;
     text-align: justify;
+}
+
+@media (max-width: 1000px){
+    .m-modal {
+        width: 90%;
+    }
+
+    .header-sobre > h1 {
+        margin-left: 10px;
+        transform: none;
+    }
 }

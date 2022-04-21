@@ -30,6 +30,12 @@ body {
     color: #ffffff;
 }
 
+.alert-error {
+    border-radius: 10px;
+    padding: 5px;
+    color: rgb(0, 255, 255);
+}
+
 .login {
     width: 40%;
     height: 100vh;
@@ -71,6 +77,7 @@ body {
 }
 #form-login div > input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px #00000002 inset;
+    box-shadow: 0 0 0px 1000px #00000002 inset;
     transition: background-color 5000s ease-in-out 0s;
     -webkit-text-fill-color: rgb(255, 255, 255) !important;
 }
@@ -118,6 +125,44 @@ body {
     color: #2bff00;
 }
 
+/* FOOTER */
+.m-footer {
+    width: 100vw;
+    height: 10vh;
+    position: fixed;
+    top: 90vh;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    z-index: 888;
+    align-items: center;
+    justify-content: center;
+}
+
+.m-footer div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.m-footer a {
+    font-size: 1rem;
+    width: 40px;
+    height: 40px;
+    padding: 0.5rem;
+    background: #00000088;
+    color: #f0f8ff;
+    margin: 0 5px;
+    border-radius: 50%;
+    transition: 0.3s;
+    text-decoration: none;
+    text-align: center;
+}
+
+.m-footer a:hover {
+    background: #000000fb;
+}
+
 @media (max-width: 1000px){
     .container {
         flex-direction: column;
@@ -152,5 +197,12 @@ body {
 
     .container > img {
         display: none;
+    }
+
+    .m-footer a {
+        font-size: 1.2rem;
+        padding: 0.3rem;
+        background: #00ff80;
+        color: #000000;
     }
 }

@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="../static/css/stylesIndex.css">
     <link rel="stylesheet" href="../static/css/styleSobre.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
+    
 </head>
 <body>
 
@@ -18,6 +19,18 @@
         <main class="login">
             <h1 class="my-text">LOGIN</h1>
             <h2 class="my-text">Faça seu login</h2>
+
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="alert-error">
+                        <ul class=flashes>
+                            {% for message in messages %}
+                               <li>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            {% endwith %}
 
             <form id="form-login" action="" method="POST">
                 <div>
@@ -29,9 +42,7 @@
                     <span class="material-icons">lock</span>
                     <input name="password" type="password" placeholder="Password" required>
                 </div>
-                <button type="submit">
-                    Entrar
-                </button>
+                <button type="submit">Entrar</button>
             </form>
 
             <div class="register-sobre">
@@ -44,17 +55,35 @@
         </main>
         
         <img src="../static/imgs/8785688841847.jpg" alt="" class="background">
-        <!-- <img src="" alt="" class="background"> -->
 
     </div>
 
+    <footer class="m-footer">
+        <div>
+            <a href="https://github.com/BrenndonCJ/Site_Controle_Financeiro" target="_blank">
+                <i class="bi bi-github"></i>
+            </a>
+            <a href="https://twitter.com/BrenndonCJ" target="_blank">
+                <i class="bi bi-twitter"></i>
+            </a>
+            <a href="https://www.instagram.com/brenndoncj/" target="_blank">
+                <i class="bi bi-instagram"></i>
+            </a>
+        </div>
+    </footer>
+
     <div class="modal-sobre">
         <div class="m-modal">
-            <h1>SOBRE O SITE</h1>
+            <div class="header-sobre">
+                <h1>SOBRE O SITE</h1>
+                <button id="btClosedSobre">
+                    <span class="material-icons">close</span>
+                </button>
+            </div>
             <div class="describle">
-                <p> Site desenvolvido para fins da disciplina <b>Desenvolvimento WEB</b>.</p>
-                <p>O objetivo do site é facilitar o controle de ganhos e gastos do usuário.</p>
-                <p>Adicione um item com descrição e valor e selecione a opção de entrada (ganho) ou saída (gasto) e acompanhe em tempo real o seu saldo.</p>
+                <p>Site desenvolvido para fins da disciplina <b>Desenvolvimento WEB</b>.</p>
+                <p>O objetivo do site é facilitar o controle de gastos do usuário.</p>
+                <p>Adicione um item com descrição e valor e acompanhe em tempo real o seu saldo.</p>
             </div>
         </div>
     </div>

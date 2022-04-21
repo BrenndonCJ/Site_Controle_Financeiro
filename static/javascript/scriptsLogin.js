@@ -1,6 +1,6 @@
 const mModal = document.querySelector('.modal-sobre')
 const btSobre = document.querySelector('#bt-sobre')
-
+const btCloseSobre = document.querySelector('#btClosedSobre')
 
 function openSobre(){
     mModal.classList.add('active-modal')
@@ -10,4 +10,10 @@ function openSobre(){
             mModal.classList.remove('active-modal')
         }
     }
+}
+
+btCloseSobre.onclick = e => {
+    e.preventDefault()
+
+    mModal.classList.remove('active-modal')
 }

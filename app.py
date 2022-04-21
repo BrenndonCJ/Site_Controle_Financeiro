@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template, request, url_for
+from flask import Flask, redirect, render_template, request, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
@@ -64,12 +64,16 @@ def register():
         username = request.form['username']
         pwd = request.form['password']
 
-        user = User(username, pwd)
-        db.session.add(user)
-        db.session.commit()
+        try:
+            user = User(username, pwd)
+            db.session.add(user)
+            db.session.commit()
+            flash("Cadastrado com sucesso")
+            return redirect(url_for('login'))
+        except:
+            flash("Nome de usuario indisponivel")
+            redirect(url_for('register'))
 
-        print(username)
-        return redirect(url_for('login'))
     return render_template('register.html')
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -81,7 +85,8 @@ def login():
         user = User.query.filter_by(username=username).first()
 
         if not user or not user.verify_password(pwd):
-            return redirect(url_for('login'))        
+            flash("Usuario ou senha incorretos")
+            return redirect('login')
 
         login_user(user)
         return redirect(url_for('home'))
@@ -141,5 +146,5 @@ def delete_data(id):
 
 if __name__ == "__main__":
     db.create_all()                         # Criando as Tabelas do banco de Dados caso não tenham sido criadas
-    app.run(threaded=True , debug=False)
+    app.run(threaded=True , debug=True)
     
